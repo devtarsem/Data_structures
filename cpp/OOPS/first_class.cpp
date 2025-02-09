@@ -17,8 +17,25 @@ class Rectangle{
 
 
 int main(){
-    Rectangle r1,r2;
-    r1.length = 10;
-    r1.breadth = 10;
-    cout<<r1.area();
+   Rectangle *p;
+   Rectangle r;
+   p = &r;
+   r.length = 10;
+   r.breadth = 10;
+   cout<<r.area()<<endl;
+
+   p->length = 20;
+   p->breadth = 40;
+   cout<<p->area()<<endl;
+
+    // inside heap
+
+    Rectangle *u;
+    u = new Rectangle();
+
+    u->length = 86;
+    u->breadth = 78;
+
+    cout<<u->area()<<endl;
+
 }
