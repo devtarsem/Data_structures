@@ -1,7 +1,6 @@
 #include<iostream>
 using namespace std;
 
-
 struct ListNode{
     int val;
     ListNode* next;
@@ -16,21 +15,26 @@ int main(){
     ListNode* fifth = new ListNode();
     ListNode* six = new ListNode();
     
-    head->val =0;
-    first->val = 1;
-    second->val = 2;
+    head->val =1;
+    first->val = 2;
+    second->val = 3;
     third->val = 4;
-    // fourth->val = 5;
-    // fifth->val = 6;
-    // six->val = 7;
+    fourth->val = 5;
+    fifth->val = 21;
+    // six->val = 9;
 
     head->next = first;
     first->next = second;
     second->next = third;
-    third->next = nullptr;
+    third->next = fourth;
+    fourth->next = fifth;
+    fifth->next = nullptr;
+    // six->next = nullptr;
+
+
     ListNode* p = head;
 
-    int count = 0;
+    int count =0;
     while(p){
         count++;
         p = p->next;
@@ -46,11 +50,29 @@ int main(){
     ListNode* final = new ListNode();
     ListNode* h =final;
 
-    
+    for(int i = count-1; i>-1; i--){
+        // arrpRev[i] = arrp[count-i-1];
+        ListNode* temp = new ListNode();
+        temp->val = arrp[i];
+        h->next = temp;
+        h = h->next;
+        
+    }
 
-   while(final){
-    cout<<final->val<<endl;
+
     final = final->next;
-   }
+    p = head;
+   
+    int sum = 0;
+    for(int i = 0; i<count/2; i++){
+        int prepsum = p->val + final->val;
+        if(sum<prepsum){
+            sum = prepsum;
+        }
+        p = p->next;
+        final=final->next;
+    }
+
+    cout<<sum;
 
 }
